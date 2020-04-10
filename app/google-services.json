@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "360710178800",
+    "firebase_url": "https://appturiatlantico.firebaseio.com",
+    "project_id": "appturiatlantico",
+    "storage_bucket": "appturiatlantico.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360710178800:android:beecb1a6f87424619f3f35",
+        "android_client_info": {
+          "package_name": "app.turiatlantico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360710178800-8iapsajmtmp6eulqjvh0j9n7un6e44fh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.turiatlantico",
+            "certificate_hash": "b2f0b9618bdd3e2221876f2568da230b7886bfe7"
+          }
+        },
+        {
+          "client_id": "360710178800-htq2sgejer9hng6h6161kp98qov3i9fg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMKdx8xNX1X8TIXE9S666bNxv8Sx_8CKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360710178800-htq2sgejer9hng6h6161kp98qov3i9fg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
