@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TuriAtlantico</string>
+    <string name="facebook_application_id">217624329488001</string>
+    <string name = "facebook_login_protocol_scheme">fb217624329488001</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
