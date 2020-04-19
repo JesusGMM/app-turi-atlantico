@@ -7,7 +7,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 
 import com.google.android.material.tabs.TabLayout;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 if (user != null) {
-                  mostrardatos();
+                  CargarVista();
                 } else {
                    AuthUI.IdpConfig facebookIdp = new AuthUI.IdpConfig.FacebookBuilder()
                            .build();
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         };
 }
 
-    private void mostrardatos() {
+    private void CargarVista() {
         tabLayout=(TabLayout)findViewById(R.id.tabsLayout);
         viewPager=(ViewPager)findViewById(R.id.viewPager);
         tabLayout.setupWithViewPager(viewPager);
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpViewPager(ViewPager viewPager) {
         TabViewPagerAdapter tabViewPagerAdapter=  new TabViewPagerAdapter(getSupportFragmentManager());
-        tabViewPagerAdapter.addFragment(new ListEventos(),"Eventos");
+        tabViewPagerAdapter.addFragment(new ListEventos(),EVENTOS);
         tabViewPagerAdapter.addFragment(new ListAtractivos(),ATRACTIVOS);
         tabViewPagerAdapter.addFragment(new ListOperadores(),OPERADORES);
         viewPager.setAdapter(tabViewPagerAdapter);
