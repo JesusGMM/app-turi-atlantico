@@ -6,6 +6,9 @@ import androidx.viewpager.widget.ViewPager;
 
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.firebase.ui.auth.AuthUI;
 
@@ -25,54 +28,20 @@ public class MainActivity extends AppCompatActivity {
     private static final String ATRACTIVOS = "Atractivos";
     private static final String OPERADORES = "Operadores";
     private static String OP="0";
-    private static final int LOGIN = 123;
-    private static final String CORREO_PASSWORD = "password";
-    private FirebaseAuth mfirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
 
     TabLayout tabLayout;
     ViewPager viewPager;
     String datos;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mfirebaseAuth = FirebaseAuth.getInstance();
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if (user != null) {
-                  CargarVista();
-                } else {
-                   AuthUI.IdpConfig facebookIdp = new AuthUI.IdpConfig.FacebookBuilder()
-                           .build();
-                    AuthUI.IdpConfig googleId = new AuthUI.IdpConfig.GoogleBuilder().build();
-
-                    AuthUI.IdpConfig TwitterId = new AuthUI.IdpConfig.TwitterBuilder().build();
-
-                    startActivityForResult(AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .setAvailableProviders(Arrays.asList(new AuthUI.IdpConfig.EmailBuilder().build(),facebookIdp, googleId, TwitterId))
-                            //.setTheme(R.style.GreenTheme)
-                            //.setLogo(R.drawable.img_multi_login)
-                           .build(), LOGIN);
-                }
-
-            }
-        };
-}
-
-    private void CargarVista() {
         tabLayout=(TabLayout)findViewById(R.id.tabsLayout);
         viewPager=(ViewPager)findViewById(R.id.viewPager);
         tabLayout.setupWithViewPager(viewPager);
         setUpViewPager(viewPager);
-    }
+}
 
 
     private void setUpViewPager(ViewPager viewPager) {
@@ -104,18 +73,22 @@ public class MainActivity extends AppCompatActivity {
             OP = "0";
         }
     }
-
     @Override
-    protected void onResume() {
-        super.onResume();
-        mfirebaseAuth.addAuthStateListener(mAuthStateListener);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        if (mAuthStateListener != null) {
-            mfirebaseAuth.removeAuthStateListener(mAuthStateListener);
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_sign_out:
+                AuthUI.getInstance().signOut(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

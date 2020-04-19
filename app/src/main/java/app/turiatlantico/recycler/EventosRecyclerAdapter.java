@@ -40,7 +40,7 @@ public class EventosRecyclerAdapter extends RecyclerView.Adapter<EventosRecycler
 
         EventosHolder.tvEvento.setText(listEventos.get(i).getEvento());
         EventosHolder.tvMes.setText(listEventos.get(i).getMes());
-        EventosHolder.tvMunicipio.setText(listEventos.get(i).getMunicipio());
+        EventosHolder.tvMunicipio.setText(listEventos.get(i).getDirrecion());
 
     }
 

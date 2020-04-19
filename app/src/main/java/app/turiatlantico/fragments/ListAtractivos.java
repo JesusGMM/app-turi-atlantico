@@ -12,11 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -44,7 +39,7 @@ public class ListAtractivos extends Fragment {
     }
 
     private void requestAtractivo() {
-
+/*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("atractivos");
 
@@ -58,8 +53,8 @@ public class ListAtractivos extends Fragment {
                     listAtractivos(atr);
                     //Toast.makeText(getContext(), "Encontrado "+eve.getEvento(), Toast.LENGTH_LONG).show();
                 }
-                /*String value = dataSnapshot.getValue(String.class);
-                Toast.makeText(MainActivity.this, ""+ value, Toast.LENGTH_LONG).show();*/
+                String value = dataSnapshot.getValue(String.class);
+                Toast.makeText(MainActivity.this, ""+ value, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -69,7 +64,7 @@ public class ListAtractivos extends Fragment {
 
             }
         });
-
+*/
 
     }
     private void listAtractivos(Atractivo atr ) {

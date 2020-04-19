@@ -3,7 +3,7 @@ package app.turiatlantico.pojos;
 public class Evento {
     private String evento;
     private String mes;
-    private String municipio;
+    private String dirrecion;
     private String descripcion;
 
     public Evento() {
@@ -25,12 +25,12 @@ public class Evento {
         this.mes = mes;
     }
 
-    public String getMunicipio() {
-        return municipio;
+    public String getDirrecion() {
+        return dirrecion;
     }
 
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
+    public void setDirrecion(String dirrecion) {
+        this.dirrecion = dirrecion;
     }
 
     public String getDescripcion() {

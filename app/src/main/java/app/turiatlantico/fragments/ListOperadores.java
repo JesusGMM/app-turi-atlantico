@@ -1,7 +1,6 @@
 package app.turiatlantico.fragments;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,18 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
 
@@ -51,7 +41,7 @@ public class ListOperadores extends Fragment  {
     }
     private void requestOperadores() {
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+   /*     FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("operadoresTuristicos");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -64,7 +54,7 @@ public class ListOperadores extends Fragment  {
                 }
 
                 /*String value = dataSnapshot.getValue(String.class);
-                Toast.makeText(MainActivity.this, ""+ value, Toast.LENGTH_LONG).show();*/
+                Toast.makeText(MainActivity.this, ""+ value, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -74,7 +64,7 @@ public class ListOperadores extends Fragment  {
 
             }
         });
-
+        */
 
     }
     private void listOperadores(final Operador ope) {

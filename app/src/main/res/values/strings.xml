@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">TuriAtlantico</string>
     <string name="facebook_application_id">217624329488001</string>
-    <string name = "facebook_login_protocol_scheme">fb217624329488001</string>
+    <string name="facebook_login_protocol_scheme">fb217624329488001</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">
         android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="title_activity_maps_operadores">Map</string>
+    <string name="serrar_seccion">Cerrar Secion</string>
+    <string name="salir"> Salir </string>
+    <string name="Iniciar"> Comenzar </string>
+    <string name="bienvenidos">Disfruta Nuestra App</string>
+    <string name="descripcion">TuriAtlantico es una App que te permitirá saber los diferentes operadores turísticos, los eventos que se realizaran durante todo el año y los diferentes atractivos turísticos con los que cuenta el departamento del Atlántico.</string>
+    <string name="msj_correo_enviado">Se ha registrado satisfactoriamente  en TuriAtlantico le hemos enviado un correo electrónico para poder validar su información. </string>
+    <string name="msj_validar_correo">Para poder ingresar a TuriAtlantico debe validar su correo electrónico y luego iniciar sección nuevamente.</string>
 </resources>
