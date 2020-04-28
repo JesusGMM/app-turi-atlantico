@@ -38,7 +38,7 @@ public class EventosRecyclerAdapter extends RecyclerView.Adapter<EventosRecycler
     @Override
     public void onBindViewHolder(@NonNull EventosRecyclerAdapter.EventosHolder EventosHolder, int i) {
 
-        EventosHolder.tvEvento.setText(listEventos.get(i).getEvento());
+        EventosHolder.tvEvento.setText(listEventos.get(i).getNombre());
         EventosHolder.tvMes.setText(listEventos.get(i).getMes());
         EventosHolder.tvMunicipio.setText(listEventos.get(i).getDirrecion());
 

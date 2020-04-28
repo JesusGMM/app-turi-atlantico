@@ -1,6 +1,6 @@
 package app.turiatlantico.fragments;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -29,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import app.turiatlantico.Detalle;
 import app.turiatlantico.R;
 import app.turiatlantico.pojos.Evento;
 import app.turiatlantico.recycler.EventosRecyclerAdapter;
@@ -67,12 +68,17 @@ public class ListEventos extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+                    lisEventos.clear();
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        if (document.getId() == "1") {
-                            Toast.makeText(getContext(), "Failed to read value." +  document.getData(), Toast.LENGTH_LONG).show();
-                        }
-                        // Evento eve = document.getData();
-                       // listEventos(eve);
+                       // String even = (String) document.getData().get("Nombre");
+                       // Toast.makeText(getContext(), "Nombre: "+document.getId(), Toast.LENGTH_LONG).show();
+                        Evento eve = new Evento();
+                        eve.setId(document.getId());
+                        eve.setDescripcion((String) document.getData().get("Descripcion"));
+                        eve.setDirrecion((String) document.getData().get("Dirrecion"));
+                        eve.setNombre((String) document.getData().get("Nombre"));
+                        eve.setMes((String) document.getData().get("fecha"));
+                        listEventos(eve);
                     }
                 } else {
                     Toast.makeText(getContext(), "Failed to read value." + task.getException(), Toast.LENGTH_LONG).show();
@@ -105,15 +111,23 @@ public class ListEventos extends Fragment {
 
     }
     private void listEventos(Evento eve) {
+
         lisEventos.add(eve);
         adapter= new EventosRecyclerAdapter(lisEventos);
         adapter.setOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),
-                        "Selección: "+lisEventos.get
-                                (recyclerView.getChildAdapterPosition(view))
-                                .getEvento(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent (view.getContext(), Detalle.class);
+                intent.putExtra("nombre",lisEventos.get(recyclerView.getChildAdapterPosition(view)).getNombre());
+                intent.putExtra("tipo","Municipio: "+lisEventos.get
+                        (recyclerView.getChildAdapterPosition(view)).getDirrecion());
+                intent.putExtra("dirrecion","");
+                intent.putExtra("detalle",lisEventos.get(recyclerView.getChildAdapterPosition(view)).getDescripcion());
+                intent.putExtra("municipio","Se celebra en el mes de: "+lisEventos.
+                        get(recyclerView.getChildAdapterPosition(view)).getMes());
+                intent.putExtra("id",lisEventos.get(recyclerView.getChildAdapterPosition(view)).getId());
+                intent.putExtra("Nom_Tipo","Eventos");
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(adapter);

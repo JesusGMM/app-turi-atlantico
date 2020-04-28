@@ -15,4 +15,9 @@
     <string name="descripcion">TuriAtlantico es una App que te permitirá saber los diferentes operadores turísticos, los eventos que se realizaran durante todo el año y los diferentes atractivos turísticos con los que cuenta el departamento del Atlántico.</string>
     <string name="msj_correo_enviado">Se ha registrado satisfactoriamente  en TuriAtlantico le hemos enviado un correo electrónico para poder validar su información. </string>
     <string name="msj_validar_correo">Para poder ingresar a TuriAtlantico debe validar su correo electrónico y luego iniciar sección nuevamente.</string>
+    <string name="Buscar">Buscar</string>
+    <string name="Perfil">Mi Perfil</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="google_maps">Ver en Maps</string>
+    <string name="todo">Imagen turistica</string>
 </resources>

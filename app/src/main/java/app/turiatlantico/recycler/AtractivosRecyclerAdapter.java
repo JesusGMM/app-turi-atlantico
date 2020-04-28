@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import app.turiatlantico.R;
 import app.turiatlantico.pojos.Atractivo;
-import app.turiatlantico.pojos.Evento;
 
 public class AtractivosRecyclerAdapter extends RecyclerView.Adapter<AtractivosRecyclerAdapter.AtractivosHolder>
 implements View.OnClickListener {
@@ -46,8 +45,8 @@ implements View.OnClickListener {
 
     @Override
     public void onBindViewHolder(@NonNull AtractivosHolder holder, int i) {
-        holder.tvNombreMunicipio.setText(listAtractivos.get(i).getNombremunicipio());
-        holder.tvNombreSitio.setText(listAtractivos.get(i).getNombresitio());
+        holder.tvNombreMunicipio.setText(listAtractivos.get(i).getMunicipio());
+        holder.tvNombreSitio.setText(listAtractivos.get(i).getNombre());
         holder.tvTipo.setText(listAtractivos.get(i).getTipo());
     }
 

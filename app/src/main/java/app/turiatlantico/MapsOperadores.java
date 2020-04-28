@@ -29,8 +29,8 @@ public class MapsOperadores extends FragmentActivity implements OnMapReadyCallba
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         Bundle bundle = getIntent().getExtras();
-        geo=bundle.getString("Geolocalizacion");
-        nombreOperador=bundle.getString("Operador");
+        geo = bundle.getString("Geolocalizacion");
+        nombreOperador = bundle.getString("Operador");
     }
 
     @Override

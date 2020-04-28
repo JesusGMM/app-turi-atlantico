@@ -1,20 +1,28 @@
 package app.turiatlantico.pojos;
 
 public class Evento {
-    private String evento;
+    private String nombre;
     private String mes;
     private String dirrecion;
     private String descripcion;
-
+    private String id;
     public Evento() {
     }
 
-    public String getEvento() {
-        return evento;
+    public String getId() {
+        return id;
     }
 
-    public void setEvento(String evento) {
-        this.evento = evento;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getMes() {

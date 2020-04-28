@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/principal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
+        android:id="@+id/contenedor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/ivOperador"
-        android:layout_width="77dp"
-        android:layout_height="67dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/googleg_standard_color_18"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="32dp">
-        <TextView
-            android:id="@+id/tvOperadorTuristico"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="operadorTuristico"
-            android:textAppearance="?android:textAppearance"
-            android:textSize="25sp"
-            android:textStyle="italic" />
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
 
-        <TextView
-            android:id="@+id/tvTelefono"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="telefono"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+        <ImageView
+            android:id="@+id/ivOperador"
+            android:layout_gravity="center_vertical"
+            android:layout_width="77dp"
+            android:layout_height="67dp"
+            android:background="@drawable/googleg_standard_color_18" />
 
-        <TextView
-            android:id="@+id/tvDireccionComercial"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/contenedor_datos"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="direccionComercial"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingRight="5dp">
 
-        <!--<TextView
-            android:id="@+id/tvGeolocalizacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="geolocalizacion"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textSize="18sp"
-            android:textStyle="italic" />-->
+            <TextView
+                android:id="@+id/tvOperadorTuristico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:textAppearance"
+                android:textSize="18sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/tvTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/tvDireccionComercial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
+
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_below="@+id/idImagen"
+        android:layout_width="500dp"
         android:layout_height="1dp"
         android:background="@color/colorPrimary"
-        android:layout_below="@+id/idImagen"
-        android:layout_marginTop="11dp" />
+        />
 </LinearLayout>

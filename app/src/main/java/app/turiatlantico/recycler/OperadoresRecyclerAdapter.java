@@ -35,7 +35,7 @@ public class OperadoresRecyclerAdapter extends RecyclerView.Adapter<OperadoresRe
     @Override
     public void onBindViewHolder(@NonNull OperadoresRecyclerAdapter.EventosHolder EventosHolder, int i) {
 
-        EventosHolder.tvOperadorTuristico.setText(listOperadores.get(i).getOperador_turistico());
+        EventosHolder.tvOperadorTuristico.setText(listOperadores.get(i).getNombre());
         EventosHolder.tvDireccionComercial.setText(listOperadores.get(i).getDireccion_comercial());
         EventosHolder.tvTelefono.setText(listOperadores.get(i).getTelefono());
 

@@ -3,10 +3,18 @@ package app.turiatlantico.pojos;
 public class Operador {
     private String direccion_comercial;
     private String geolocalizacion;
-    private String operador_turistico;
+    private String nombre;
     private String telefono;
-
+    private String id;
     public Operador() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDireccion_comercial() {
@@ -25,12 +33,12 @@ public class Operador {
         this.geolocalizacion = geolocalizacion;
     }
 
-    public String getOperador_turistico() {
-        return operador_turistico;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOperador_turistico(String operador_turistico) {
-        this.operador_turistico = operador_turistico;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getTelefono() {
