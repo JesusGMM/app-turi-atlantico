@@ -119,11 +119,11 @@ public class ListEventos extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent (view.getContext(), Detalle.class);
                 intent.putExtra("nombre",lisEventos.get(recyclerView.getChildAdapterPosition(view)).getNombre());
-                intent.putExtra("tipo","Municipio: "+lisEventos.get
+                intent.putExtra("tipo",lisEventos.get
                         (recyclerView.getChildAdapterPosition(view)).getDirrecion());
                 intent.putExtra("dirrecion","");
                 intent.putExtra("detalle",lisEventos.get(recyclerView.getChildAdapterPosition(view)).getDescripcion());
-                intent.putExtra("municipio","Se celebra en el mes de: "+lisEventos.
+                intent.putExtra("municipio",lisEventos.
                         get(recyclerView.getChildAdapterPosition(view)).getMes());
                 intent.putExtra("id",lisEventos.get(recyclerView.getChildAdapterPosition(view)).getId());
                 intent.putExtra("Nom_Tipo","Eventos");

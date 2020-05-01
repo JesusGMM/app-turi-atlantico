@@ -114,7 +114,7 @@ public class ListAtractivos extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent (view.getContext(), Detalle.class);
-                intent.putExtra("municipio","Municipio: "+lisAtractivos.get
+                intent.putExtra("municipio",lisAtractivos.get
                         (recyclerView.getChildAdapterPosition(view)).getMunicipio());
                 intent.putExtra("nombre",lisAtractivos.get(recyclerView.getChildAdapterPosition(view)).getNombre());
                 intent.putExtra("detalle",lisAtractivos.get(recyclerView.getChildAdapterPosition(view)).getDescripcion());

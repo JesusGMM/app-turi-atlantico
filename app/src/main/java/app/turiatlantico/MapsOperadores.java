@@ -17,8 +17,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsOperadores extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    String geo="";
-    String nombreOperador="";
+    private String geo="";
+    private String nombreOperador="";
+    private int zoom = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MapsOperadores extends FragmentActivity implements OnMapReadyCallba
         Bundle bundle = getIntent().getExtras();
         geo = bundle.getString("Geolocalizacion");
         nombreOperador = bundle.getString("Operador");
+        zoom = bundle.getInt("Distancia");
     }
 
     @Override
@@ -49,6 +51,6 @@ public class MapsOperadores extends FragmentActivity implements OnMapReadyCallba
         LatLng operador = new LatLng(part1, -part2);
         mMap.addMarker(new MarkerOptions().position(operador).title(nombreOperador)
         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(operador,15));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(operador,zoom));
     }
 }

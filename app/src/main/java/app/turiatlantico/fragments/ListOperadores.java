@@ -88,7 +88,7 @@ public class ListOperadores extends Fragment  {
                 intent.putExtra("tipo","Municipio: Barranquilla");
                 intent.putExtra("dirrecion","Dirrecion: "+lisOperadores.get
                         (recyclerView.getChildAdapterPosition(view)).getDireccion_comercial());
-                intent.putExtra("detalle",lisOperadores.get(recyclerView.getChildAdapterPosition(view)).getGeolocalizacion());
+                intent.putExtra("Ubicacion",lisOperadores.get(recyclerView.getChildAdapterPosition(view)).getGeolocalizacion());
                 intent.putExtra("municipio","Telefono: "+lisOperadores.
                         get(recyclerView.getChildAdapterPosition(view)).getTelefono());
                 intent.putExtra("id",lisOperadores.get(recyclerView.getChildAdapterPosition(view)).getId());
