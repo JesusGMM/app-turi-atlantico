@@ -13,6 +13,8 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -37,14 +39,23 @@ import app.turiatlantico.recycler.AtractivosRecyclerAdapter;
  */
 public class ListAtractivos extends Fragment {
     private static  final String ATRACTIVO = "Atractivos";
+    private String buscar = "";
     AtractivosRecyclerAdapter adapter;
     RecyclerView recyclerView;
     ArrayList<Atractivo> lisAtractivos = new ArrayList<>();
+
+    public String getBuscar() {
+        return buscar;
+    }
+
+    public void setBuscar(String buscar) {
+        this.buscar = buscar;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View vw=inflater.inflate(R.layout.fragment_list, container, false);
+        View vw = inflater.inflate(R.layout.fragment_list, container, false);
         recyclerView = (RecyclerView) vw.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         requestAtractivo();
@@ -56,22 +67,22 @@ public class ListAtractivos extends Fragment {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         CollectionReference myRef = firestore.collection(ATRACTIVO);
 
-        myRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        myRef.orderBy("Nombre") .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     lisAtractivos.clear();
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        // String even = (String) document.getData().get("Nombre");
-                        //Toast.makeText(getContext(), "Nombre: "+even, Toast.LENGTH_LONG).show();
-                        Atractivo atractivo = new Atractivo();
-                        atractivo.setId(document.getId());
-                        atractivo.setDescripcion((String) document.getData().get("Descripcion"));
-                        atractivo.setDirrecion((String) document.getData().get("Dirrecion"));
-                        atractivo.setNombre((String) document.getData().get("Nombre"));
-                        atractivo.setTipo((String) document.getData().get("Tipo"));
-                        atractivo.setMunicipio((String) document.getData().get("Municipio"));
-                        listAtractivos(atractivo);
+                        if (buscar.equalsIgnoreCase("")) {
+                            CrearObjeto(document);
+                        }else {
+                            String texto =(String) document.getData().get("Nombre");
+                            int i = buscar.length();
+                            String inicial = texto.substring(0,i);
+                            if (inicial.equalsIgnoreCase(buscar)){
+                                CrearObjeto(document);
+                            }
+                        }
                     }
                 } else {
                     Toast.makeText(getContext(), "Failed to read value." + task.getException(), Toast.LENGTH_LONG).show();
@@ -79,33 +90,17 @@ public class ListAtractivos extends Fragment {
 
             }
         });
-/*
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("atractivos");
+    }
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                for(DataSnapshot snapShot: dataSnapshot.getChildren()){
-                    Atractivo atr = snapShot.getValue(Atractivo.class);
-                    listAtractivos(atr);
-                    //Toast.makeText(getContext(), "Encontrado "+eve.getEvento(), Toast.LENGTH_LONG).show();
-                }
-                String value = dataSnapshot.getValue(String.class);
-                Toast.makeText(MainActivity.this, ""+ value, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Toast.makeText(getContext(), "Failed to read value.", Toast.LENGTH_LONG).show();
-
-            }
-        });
-*/
-
+    public void CrearObjeto(QueryDocumentSnapshot document){
+        Atractivo atractivo = new Atractivo();
+        atractivo.setId(document.getId());
+        atractivo.setDescripcion((String) document.getData().get("Descripcion"));
+        atractivo.setDirrecion((String) document.getData().get("Dirrecion"));
+        atractivo.setNombre((String) document.getData().get("Nombre"));
+        atractivo.setTipo((String) document.getData().get("Tipo"));
+        atractivo.setMunicipio((String) document.getData().get("Municipio"));
+        listAtractivos(atractivo);
     }
     private void listAtractivos(final Atractivo atr ) {
         lisAtractivos.add(atr);

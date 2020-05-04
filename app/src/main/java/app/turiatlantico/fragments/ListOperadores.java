@@ -35,6 +35,7 @@ import app.turiatlantico.recycler.OperadoresRecyclerAdapter;
  */
 public class ListOperadores extends Fragment  {
     private static  final String OPERADORES = "Operadores";
+    private String buscar = "";
     OperadoresRecyclerAdapter adapter;
     RecyclerView recyclerView;
     ArrayList<Operador> lisOperadores = new ArrayList<>();
@@ -49,25 +50,36 @@ public class ListOperadores extends Fragment  {
         requestOperadores();
         return vw;
     }
+
+    public String getBuscar() {
+        return buscar;
+    }
+
+    public void setBuscar(String buscar) {
+        this.buscar = buscar;
+    }
+
     private void requestOperadores() {
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         CollectionReference myRef = firestore.collection(OPERADORES);
 
-        myRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        myRef.orderBy("Nombre").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     lisOperadores.clear();
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                       // Toast.makeText(getContext(), "Nombre: "+document.getId(), Toast.LENGTH_LONG).show();
-                        Operador operador = new Operador();
-                        operador.setId(document.getId());
-                        operador.setDireccion_comercial((String) document.getData().get("Dirrecion"));
-                        operador.setTelefono((String) document.getData().get("Telefono"));
-                        operador.setNombre((String) document.getData().get("Nombre"));
-                        operador.setGeolocalizacion((String) document.getData().get("Geolocalizacion"));
-                        listOperadores(operador);
+                        if (buscar.equalsIgnoreCase("")) {
+                            CrearObjeto(document);
+                        }else {
+                            String texto = (String) document.getData().get("Nombre");
+                            int i = buscar.length();
+                            String inicial = texto.substring(0,i);
+                            if (inicial.equalsIgnoreCase(buscar)){
+                                CrearObjeto(document);
+                            }
+                        }
                     }
                 } else {
                     Toast.makeText(getContext(), "Failed to read value." + task.getException(), Toast.LENGTH_LONG)
@@ -76,7 +88,17 @@ public class ListOperadores extends Fragment  {
             }
         });
     }
+    public void CrearObjeto(QueryDocumentSnapshot document){
+        Operador operador = new Operador();
+        operador.setId(document.getId());
+        operador.setDireccion_comercial((String) document.getData().get("Dirrecion"));
+        operador.setTelefono((String) document.getData().get("Telefono"));
+        operador.setNombre((String) document.getData().get("Nombre"));
+        operador.setGeolocalizacion((String) document.getData().get("Geolocalizacion"));
+        listOperadores(operador);
 
+
+    }
     private void listOperadores(final Operador ope) {
         lisOperadores.add(ope);
         adapter= new OperadoresRecyclerAdapter(lisOperadores);

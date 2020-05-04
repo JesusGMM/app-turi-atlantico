@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class TabViewPagerAdapter extends FragmentPagerAdapter {
 
     private final ArrayList<Fragment> fragmentsList= new ArrayList<>();
-    private final ArrayList<String> fragTitulos=new ArrayList<>();
+    private final ArrayList<String> fragTitulos = new ArrayList<>();
 
     public TabViewPagerAdapter(FragmentManager fm) {
         super(fm);

@@ -20,4 +20,6 @@
     <string name="Aceptar">Aceptar</string>
     <string name="google_maps">Ver en Maps</string>
     <string name="todo">Imagen turistica</string>
+    <string name="Lupa">Lupa</string>
+    <string name="cerrar">Cerrar</string>
 </resources>

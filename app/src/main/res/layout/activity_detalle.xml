@@ -52,9 +52,12 @@
                     android:id="@+id/progress"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:layout_alignParentTop="@+id/Foto"
-                    android:layout_marginTop="15dp"
-                    android:paddingTop="30dp"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginTop="60dp"
+                    android:foregroundGravity="center"
+                    android:paddingTop="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:visibility="visible" />
 
             </RelativeLayout>
