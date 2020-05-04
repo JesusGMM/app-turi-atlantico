@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         tabViewPagerAdapter.addFragment(listAtractivos, ATRACTIVOS);
         tabViewPagerAdapter.addFragment(listOperadores, OPERADORES);
         viewPager.setAdapter(tabViewPagerAdapter);
-        Toast.makeText(this, "0", Toast.LENGTH_LONG).show();
+
         /*Bundle parametros = this.getIntent().getExtras();
 
         if(parametros != null){
