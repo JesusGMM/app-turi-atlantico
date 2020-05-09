@@ -20,10 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.google.android.material.tabs.TabLayout;
-
-
 
 import app.turiatlantico.fragments.ListAtractivos;
 import app.turiatlantico.fragments.ListEventos;
@@ -43,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txPerfil;
     ImageView Borrar_busqueda;
     EditText buscar;
+    private int item = 0;
     private static ListEventos listEventos = new ListEventos();
     private static ListAtractivos listAtractivos = new ListAtractivos();
     private static ListOperadores listOperadores = new ListOperadores();
@@ -62,36 +60,7 @@ public class MainActivity extends AppCompatActivity {
         buscar.setText("");
         listEventos.setBuscar(buscar.getText().toString());
         setUpViewPager(viewPager);
-
-        buscar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.toString().equalsIgnoreCase("")) {
-                    Borrar_busqueda.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    Borrar_busqueda.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    listEventos.setBuscar(s.toString());
-                    listAtractivos.setBuscar(s.toString());
-                    listOperadores.setBuscar(s.toString());
-                    setUpViewPager(viewPager);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().equalsIgnoreCase("")) {
-                    Borrar_busqueda.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    Borrar_busqueda.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+       Buscar_por_Nombre();
 
         Borrar_busqueda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +74,39 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
+    private void Buscar_por_Nombre() {
+        buscar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (s.toString().equalsIgnoreCase("")) {
+                    Borrar_busqueda.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    Borrar_busqueda.setVisibility(View.VISIBLE);
+                }
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                item = viewPager.getCurrentItem();
+                listEventos.setBuscar(s.toString());
+                listAtractivos.setBuscar(s.toString());
+                listOperadores.setBuscar(s.toString());
+                setUpViewPager(viewPager);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equalsIgnoreCase("")) {
+                    Borrar_busqueda.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    Borrar_busqueda.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+    }
 
 
     private void setUpViewPager(ViewPager viewPager) {
@@ -114,16 +115,16 @@ public class MainActivity extends AppCompatActivity {
         tabViewPagerAdapter.addFragment(listAtractivos, ATRACTIVOS);
         tabViewPagerAdapter.addFragment(listOperadores, OPERADORES);
         viewPager.setAdapter(tabViewPagerAdapter);
+        viewPager.setCurrentItem(item);
 
         /*Bundle parametros = this.getIntent().getExtras();
-
         if(parametros != null){
                 datos = parametros.getString("op");
+
             if(datos.equalsIgnoreCase("1")) {
                 Toast.makeText(this, "1", Toast.LENGTH_LONG).show();
                 OP="1";
                 return;
-
             }
             if(datos.equalsIgnoreCase("2")){
                 OP="2";

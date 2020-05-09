@@ -5,6 +5,7 @@ package app.turiatlantico.recycler;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
+
 
 import app.turiatlantico.R;
 import app.turiatlantico.pojos.Evento;

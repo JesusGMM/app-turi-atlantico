@@ -31,7 +31,6 @@ public class TabViewPagerAdapter extends FragmentPagerAdapter {
     }
     @Override
     public CharSequence getPageTitle(int i){
-
         return fragTitulos.get(i);
     }
 

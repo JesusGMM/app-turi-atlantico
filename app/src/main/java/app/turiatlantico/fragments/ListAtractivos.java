@@ -76,12 +76,9 @@ public class ListAtractivos extends Fragment {
                         if (buscar.equalsIgnoreCase("")) {
                             CrearObjeto(document);
                         }else {
-                            String texto =(String) document.getData().get("Nombre");
-                            int i = buscar.length();
-                            String inicial = texto.substring(0,i);
-                            if (inicial.equalsIgnoreCase(buscar)){
+                            String texto = (String) document.getData().get("Nombre");
+                            if (texto.toLowerCase().contains(buscar.toLowerCase()))
                                 CrearObjeto(document);
-                            }
                         }
                     }
                 } else {

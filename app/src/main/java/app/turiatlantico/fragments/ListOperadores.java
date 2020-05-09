@@ -74,11 +74,8 @@ public class ListOperadores extends Fragment  {
                             CrearObjeto(document);
                         }else {
                             String texto = (String) document.getData().get("Nombre");
-                            int i = buscar.length();
-                            String inicial = texto.substring(0,i);
-                            if (inicial.equalsIgnoreCase(buscar)){
+                            if (texto.toLowerCase().contains(buscar.toLowerCase()))
                                 CrearObjeto(document);
-                            }
                         }
                     }
                 } else {
@@ -88,6 +85,7 @@ public class ListOperadores extends Fragment  {
             }
         });
     }
+
     public void CrearObjeto(QueryDocumentSnapshot document){
         Operador operador = new Operador();
         operador.setId(document.getId());
@@ -99,6 +97,7 @@ public class ListOperadores extends Fragment  {
 
 
     }
+
     private void listOperadores(final Operador ope) {
         lisOperadores.add(ope);
         adapter= new OperadoresRecyclerAdapter(lisOperadores);
